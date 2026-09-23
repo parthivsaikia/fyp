@@ -1,0 +1,105 @@
+{
+  "sensor": "acoustic",
+  "top_features": [
+    {
+      "name": "pressure_wp_entropy",
+      "importance": 0.0,
+      "std": 0.0
+    },
+    {
+      "name": "pressure_wp_energy_7",
+      "importance": 0.0,
+      "std": 0.0
+    },
+    {
+      "name": "pressure_wp_energy_6",
+      "importance": 0.0,
+      "std": 0.0
+    },
+    {
+      "name": "pressure_wp_energy_5",
+      "importance": 0.0,
+      "std": 0.0
+    },
+    {
+      "name": "pressure_wp_energy_4",
+      "importance": 0.0,
+      "std": 0.0
+    },
+    {
+      "name": "pressure_wp_energy_3",
+      "importance": 0.0,
+      "std": 0.0
+    },
+    {
+      "name": "pressure_wp_energy_2",
+      "importance": 0.0,
+      "std": 0.0
+    },
+    {
+      "name": "pressure_wp_energy_1",
+      "importance": 0.0,
+      "std": 0.0
+    },
+    {
+      "name": "pressure_wp_energy_0",
+      "importance": 0.0,
+      "std": 0.0
+    },
+    {
+      "name": "pressure_band_energy_3",
+      "importance": 0.0,
+      "std": 0.0
+    },
+    {
+      "name": "pressure_band_energy_2",
+      "importance": 0.0,
+      "std": 0.0
+    },
+    {
+      "name": "pressure_band_energy_1",
+      "importance": 0.0,
+      "std": 0.0
+    },
+    {
+      "name": "pressure_band_energy_0",
+      "importance": 0.0,
+      "std": 0.0
+    },
+    {
+      "name": "pressure_total_power",
+      "importance": 0.0,
+      "std": 0.0
+    },
+    {
+      "name": "pressure_spectral_entropy",
+      "importance": 0.0,
+      "std": 0.0
+    },
+    {
+      "name": "pressure_spectral_centroid",
+      "importance": 0.0,
+      "std": 0.0
+    },
+    {
+      "name": "pressure_dominant_freq",
+      "importance": 0.0,
+      "std": 0.0
+    },
+    {
+      "name": "pressure_impulse_factor",
+      "importance": 0.0,
+      "std": 0.0
+    },
+    {
+      "name": "pressure_shape_factor",
+      "importance": 0.0,
+      "std": 0.0
+    },
+    {
+      "name": "pressure_crest_factor",
+      "importance": 0.0,
+      "std": 0.0
+    }
+  ]
+}

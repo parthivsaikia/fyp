@@ -1,0 +1,105 @@
+{
+  "sensor": "vibration",
+  "top_features": [
+    {
+      "name": "y_housing_A_y_housing_B_corr",
+      "importance": 0.04477331426758363,
+      "std": 0.004365228844684659
+    },
+    {
+      "name": "y_housing_B_shape_factor",
+      "importance": 0.044378940854642925,
+      "std": 0.002810189817759699
+    },
+    {
+      "name": "y_diff_skewness",
+      "importance": 0.03868167008947306,
+      "std": 0.004554553946851098
+    },
+    {
+      "name": "y_housing_B_kurtosis",
+      "importance": 0.03793562254594087,
+      "std": 0.003915096819341073
+    },
+    {
+      "name": "x_housing_A_y_housing_B_corr",
+      "importance": 0.03717355103254918,
+      "std": 0.0020477785794850195
+    },
+    {
+      "name": "x_housing_B_wp_energy_0",
+      "importance": 0.03640596556566981,
+      "std": 0.0038896035884449028
+    },
+    {
+      "name": "y_housing_B_impulse_factor",
+      "importance": 0.03411715422025054,
+      "std": 0.004661869974638835
+    },
+    {
+      "name": "y_sum_skewness",
+      "importance": 0.031102963713987197,
+      "std": 0.004370572781074692
+    },
+    {
+      "name": "x_housing_B_wp_energy_2",
+      "importance": 0.029445339941284798,
+      "std": 0.004409732128662422
+    },
+    {
+      "name": "x_housing_A_wp_energy_7",
+      "importance": 0.027945272008487388,
+      "std": 0.006065411649492716
+    },
+    {
+      "name": "y_housing_A_wp_energy_7",
+      "importance": 0.026731635503320028,
+      "std": 0.004824788266392731
+    },
+    {
+      "name": "x_housing_A_wp_energy_6",
+      "importance": 0.024699954176173978,
+      "std": 0.00504195941914196
+    },
+    {
+      "name": "y_housing_A_skewness",
+      "importance": 0.022525199657105876,
+      "std": 0.003598341463449134
+    },
+    {
+      "name": "x_sum_skewness",
+      "importance": 0.021070145935472184,
+      "std": 0.002662270482278285
+    },
+    {
+      "name": "y_housing_A_wp_energy_0",
+      "importance": 0.019148118275927384,
+      "std": 0.002607811646841648
+    },
+    {
+      "name": "x_housing_B_skewness",
+      "importance": 0.01822332704784666,
+      "std": 0.002780525746651634
+    },
+    {
+      "name": "y_housing_B_crest_factor",
+      "importance": 0.01759817020339457,
+      "std": 0.004409081418922303
+    },
+    {
+      "name": "y_housing_A_spectral_entropy",
+      "importance": 0.015645277701314263,
+      "std": 0.0017562719465228824
+    },
+    {
+      "name": "y_housing_B_wp_energy_0",
+      "importance": 0.0154794861288861,
+      "std": 0.001457540845727743
+    },
+    {
+      "name": "y_housing_A_wp_energy_1",
+      "importance": 0.015045959901757855,
+      "std": 0.0021917654117075496
+    }
+  ]
+}

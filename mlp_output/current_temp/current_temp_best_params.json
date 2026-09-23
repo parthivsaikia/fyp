@@ -1,0 +1,8 @@
+{
+  "hidden_layer_sizes": [
+    256
+  ],
+  "alpha": 0.03340886228597038,
+  "learning_rate_init": 0.009157941165804994,
+  "activation": "relu"
+}

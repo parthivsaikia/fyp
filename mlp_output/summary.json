@@ -1,0 +1,18 @@
+{
+  "acoustic": {
+    "accuracy": 1.0,
+    "macro_f1": 1.0,
+    "macro_precision": 1.0,
+    "macro_recall": 1.0,
+    "best_params": {
+      "hidden_layer_sizes": [
+        64,
+        32
+      ],
+      "alpha": 0.06233357970148753,
+      "learning_rate_init": 0.03315671268277966,
+      "activation": "relu"
+    },
+    "n_features": 27
+  }
+}

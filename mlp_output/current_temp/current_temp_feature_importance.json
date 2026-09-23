@@ -1,0 +1,105 @@
+{
+  "sensor": "current_temp",
+  "top_features": [
+    {
+      "name": "U_phase_dominant_freq",
+      "importance": 0.27133924733084896,
+      "std": 0.010905186495343352
+    },
+    {
+      "name": "U_phase_spectral_entropy",
+      "importance": 0.11093737258207255,
+      "std": 0.003177213776286721
+    },
+    {
+      "name": "U_phase_rms",
+      "importance": 0.09568178380867803,
+      "std": 0.004528977383500578
+    },
+    {
+      "name": "U_phase_std",
+      "importance": 0.09076588640031812,
+      "std": 0.004239841961131807
+    },
+    {
+      "name": "U_phase_var",
+      "importance": 0.0893359861738134,
+      "std": 0.004389195729610727
+    },
+    {
+      "name": "U_phase_total_power",
+      "importance": 0.08913726589395632,
+      "std": 0.004732861720697076
+    },
+    {
+      "name": "temp_A_total_power",
+      "importance": 0.06641188137968271,
+      "std": 0.0038738664081682883
+    },
+    {
+      "name": "temp_A_rms",
+      "importance": 0.06575728545657991,
+      "std": 0.0034011597443107536
+    },
+    {
+      "name": "temp_A_mean",
+      "importance": 0.06126767876663778,
+      "std": 0.00419655256668768
+    },
+    {
+      "name": "U_phase_mean",
+      "importance": 0.04865945904742226,
+      "std": 0.006126467289800281
+    },
+    {
+      "name": "U_phase_kurtosis",
+      "importance": 0.04775916489620517,
+      "std": 0.0038560092033632287
+    },
+    {
+      "name": "temp_B_mean",
+      "importance": 0.04523380197208897,
+      "std": 0.007599323345485389
+    },
+    {
+      "name": "temp_B_rms",
+      "importance": 0.0396185804061301,
+      "std": 0.005736832244139736
+    },
+    {
+      "name": "temp_B_total_power",
+      "importance": 0.038917784510789234,
+      "std": 0.005532727785631206
+    },
+    {
+      "name": "U_phase_peak_to_peak",
+      "importance": 0.03571223488499824,
+      "std": 0.004197157602156752
+    },
+    {
+      "name": "U_phase_skewness",
+      "importance": 0.029154851520894042,
+      "std": 0.004067317883513705
+    },
+    {
+      "name": "U_phase_wp_energy_6",
+      "importance": 0.01170883644441142,
+      "std": 0.002625558722523612
+    },
+    {
+      "name": "temp_B_wp_energy_6",
+      "importance": 0.007031520966640647,
+      "std": 0.0017997651574232353
+    },
+    {
+      "name": "temp_A_var",
+      "importance": 0.0061977227502358016,
+      "std": 0.0026231443623764847
+    },
+    {
+      "name": "temp_B_wp_energy_3",
+      "importance": 0.005759794840279997,
+      "std": 0.0023626536311063084
+    }
+  ]
+}

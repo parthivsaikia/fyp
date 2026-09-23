@@ -1,0 +1,73 @@
+{
+  "sensor": "vibration",
+  "accuracy": 0.6002578981302386,
+  "macro_f1": 0.6684165536624553,
+  "macro_precision": 0.819557625145518,
+  "macro_recall": 0.7838214783821479,
+  "confusion_matrix": [
+    [
+      357,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      238,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      97,
+      620
+    ],
+    [
+      0,
+      0,
+      0,
+      239
+    ]
+  ],
+  "classification_report": {
+    "BPFI": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 357.0
+    },
+    "BPFO": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 238.0
+    },
+    "Misalign": {
+      "precision": 1.0,
+      "recall": 0.13528591352859135,
+      "f1-score": 0.23832923832923833,
+      "support": 717.0
+    },
+    "Unbalance": {
+      "precision": 0.27823050058207216,
+      "recall": 1.0,
+      "f1-score": 0.4353369763205829,
+      "support": 239.0
+    },
+    "accuracy": 0.6002578981302386,
+    "macro avg": {
+      "precision": 0.819557625145518,
+      "recall": 0.7838214783821479,
+      "f1-score": 0.6684165536624553,
+      "support": 1551.0
+    },
+    "weighted avg": {
+      "precision": 0.8887795548930466,
+      "recall": 0.6002578981302386,
+      "f1-score": 0.5608817544956048,
+      "support": 1551.0
+    }
+  },
+  "test_samples": 1551
+}

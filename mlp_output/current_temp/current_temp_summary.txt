@@ -1,0 +1,25 @@
+============================================================
+MLP Fault Diagnosis - CURRENT_TEMP Sensor
+============================================================
+
+Test Set Performance:
+  Accuracy:     0.8860
+  Macro F1:     0.8546
+  Macro Precision: 0.9079
+  Macro Recall:   0.8519
+
+Test Samples: 1790
+
+Per-Class Metrics:
+  BPFI        : Prec=0.9944, Rec=0.4986, F1=0.6642, Support=357.0
+  BPFO        : Prec=0.9198, Rec=0.9160, F1=0.9179, Support=238.0
+  Misalign    : Prec=0.9740, Rec=0.9930, F1=0.9834, Support=717.0
+  Unbalance   : Prec=0.7434, Rec=1.0000, F1=0.8528, Support=478.0
+
+Confusion Matrix:
+  Rows=Actual, Cols=Predicted
+  Classes: ['BPFI', 'BPFO', 'Misalign', 'Unbalance']
+  BPFI        : [178  19   0 160]
+  BPFO        : [  1 218  19   0]
+  Misalign    : [  0   0 712   5]
+  Unbalance   : [  0   0   0 478]
