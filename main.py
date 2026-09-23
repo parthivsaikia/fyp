@@ -109,6 +109,13 @@ def run_sensor_pipeline(
     print(f"    Final train: {X_train.shape[0]} samples, {len(np.unique(train_labels))} classes")
     print(f"    Final test:  {X_test.shape[0]} samples, {len(np.unique(test_labels))} classes")
     
+    # Compute class weights for imbalanced data
+    from sklearn.utils.class_weight import compute_class_weight
+    classes = np.unique(train_labels)
+    weights = compute_class_weight('balanced', classes=classes, y=train_labels)
+    class_weights = dict(zip(classes, weights))
+    print(f"    Class weights: {class_weights}")
+    
     # Step 2: PSO Optimization
     print(f"\n[2/5] PSO hyperparameter optimization...")
     if run_pso:
@@ -117,7 +124,8 @@ def run_sensor_pipeline(
             X_train, train_labels, sensor_name,
             n_particles=pso_particles,
             n_iterations=pso_iterations,
-            verbose=True
+            verbose=True,
+            class_weights=class_weights
         )
         print(f"    Time: {time.time() - start:.1f}s")
     else:
@@ -137,7 +145,8 @@ def run_sensor_pipeline(
     start = time.time()
     pipeline, scaler = train_final_model(
         X_train, train_labels, best_params, sensor_name,
-        save_path=sensor_output_dir
+        save_path=sensor_output_dir,
+        class_weights=class_weights
     )
     print(f"    Time: {time.time() - start:.1f}s")
     
@@ -179,6 +188,7 @@ def run_sensor_pipeline(
         "n_test_windows": int(len(test_labels)),
         "train_class_distribution": get_class_distribution(train_labels),
         "test_class_distribution": get_class_distribution(test_labels),
+        "class_weights": {str(k): float(v) for k, v in class_weights.items()},
         "classes_used": class_names,
         "best_params": best_params,
         "pso_convergence": convergence_curve,

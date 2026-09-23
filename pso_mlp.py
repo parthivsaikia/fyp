@@ -57,7 +57,15 @@ def create_mlp(params: Dict[str, Any], random_state: int = MLP_RANDOM_STATE) -> 
     )
 
 
-def fitness_function(positions: np.ndarray, X: np.ndarray, y: np.ndarray) -> np.ndarray:
+def compute_class_weights(y: np.ndarray) -> Dict[int, float]:
+    """Compute balanced class weights for imbalanced datasets."""
+    from sklearn.utils.class_weight import compute_class_weight
+    classes = np.unique(y)
+    weights = compute_class_weight('balanced', classes=classes, y=y)
+    return dict(zip(classes, weights))
+
+
+def fitness_function(positions: np.ndarray, X: np.ndarray, y: np.ndarray, class_weights: Dict = None) -> np.ndarray:
     """
     PSO fitness function - negative CV score (PSO minimizes).
     
@@ -65,6 +73,7 @@ def fitness_function(positions: np.ndarray, X: np.ndarray, y: np.ndarray) -> np.
         positions: (n_particles, n_dimensions)
         X: Feature matrix
         y: Labels
+        class_weights: Optional dict of class weights for imbalanced data
         
     Returns:
         Fitness values (negative CV score for minimization)
@@ -76,16 +85,37 @@ def fitness_function(positions: np.ndarray, X: np.ndarray, y: np.ndarray) -> np.
     
     for i in range(n_particles):
         params = decode_particle(positions[i])
-        mlp = create_mlp(params)
-        
-        # Create pipeline with scaler
-        pipeline = Pipeline([
-            ("scaler", StandardScaler()),
-            ("mlp", mlp)
-        ])
         
         try:
-            scores = cross_val_score(pipeline, X, y, cv=cv, scoring=CV_SCORING, n_jobs=-1)
+            # Manual CV with class weights
+            scores = []
+            for train_idx, val_idx in cv.split(X, y):
+                X_train_cv, X_val_cv = X[train_idx], X[val_idx]
+                y_train_cv, y_val_cv = y[train_idx], y[val_idx]
+                
+                # Scale
+                scaler = StandardScaler()
+                X_train_cv = scaler.fit_transform(X_train_cv)
+                X_val_cv = scaler.transform(X_val_cv)
+                
+                # Train with class weights
+                mlp = create_mlp(params)
+                if class_weights is not None:
+                    sample_weights = np.array([class_weights[l] for l in y_train_cv])
+                    mlp.fit(X_train_cv, y_train_cv, sample_weight=sample_weights)
+                else:
+                    mlp.fit(X_train_cv, y_train_cv)
+                
+                # Evaluate
+                y_pred = mlp.predict(X_val_cv)
+                if CV_SCORING == "f1_macro":
+                    from sklearn.metrics import f1_score
+                    score = f1_score(y_val_cv, y_pred, average='macro')
+                else:
+                    from sklearn.metrics import accuracy_score
+                    score = accuracy_score(y_val_cv, y_pred)
+                scores.append(score)
+            
             fitness[i] = -np.mean(scores)  # Negative for minimization
         except Exception as e:
             print(f"  Particle {i} failed: {e}")
@@ -100,7 +130,8 @@ def optimize_pso(
     sensor_name: str,
     n_particles: int = None,
     n_iterations: int = None,
-    verbose: bool = True
+    verbose: bool = True,
+    class_weights: Dict = None
 ) -> Tuple[Dict[str, Any], List[float], np.ndarray]:
     """
     Run PSO optimization to find best MLP hyperparameters.
@@ -141,13 +172,15 @@ def optimize_pso(
         print(f"PSO Optimization for {sensor_name}")
         print(f"Particles: {n_particles}, Iterations: {n_iterations}")
         print(f"CV Folds: {CV_FOLDS}, Scoring: {CV_SCORING}")
+        if class_weights:
+            print(f"Class weights: {class_weights}")
         print(f"{'='*60}\n")
     
     # Run optimization
     start_time = time.time()
     
     def obj_func(pos):
-        return fitness_function(pos, X, y)
+        return fitness_function(pos, X, y, class_weights)
     
     best_cost, best_pos = optimizer.optimize(obj_func, iters=n_iterations, verbose=verbose)
     
@@ -172,7 +205,8 @@ def train_final_model(
     y_train: np.ndarray,
     best_params: Dict[str, Any],
     sensor_name: str,
-    save_path: Optional[Path] = None
+    save_path: Optional[Path] = None,
+    class_weights: Dict = None
 ) -> Tuple[Pipeline, StandardScaler]:
     """
     Train final MLP model on full training set with best hyperparameters.
@@ -190,8 +224,14 @@ def train_final_model(
     
     print(f"\nTraining final model for {sensor_name}...")
     print(f"Training samples: {X_train.shape[0]}, Features: {X_train.shape[1]}")
+    if class_weights:
+        print(f"Using class weights: {class_weights}")
     
-    pipeline.fit(X_train, y_train)
+    if class_weights is not None:
+        sample_weights = np.array([class_weights[l] for l in y_train])
+        pipeline.fit(X_train, y_train, mlp__sample_weight=sample_weights)
+    else:
+        pipeline.fit(X_train, y_train)
     
     # Extract scaler and MLP for saving
     scaler = pipeline.named_steps["scaler"]

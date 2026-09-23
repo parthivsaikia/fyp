@@ -139,6 +139,50 @@ def frequency_domain_features(x: np.ndarray, fs: float) -> Dict[str, float]:
 
 
 # ============================================================
+# Bearing Fault Frequency Features
+# ============================================================
+def bearing_fault_frequency_features(x: np.ndarray, fs: float) -> Dict[str, float]:
+    """Extract energy at bearing fault characteristic frequencies.
+    
+    These are highly discriminative for BPFI, BPFO, Misalign, Unbalance.
+    """
+    from config import BEARING_FAULT_BANDS
+    
+    x = np.asarray(x).flatten()
+    n = len(x)
+    
+    empty_result = {
+        'bpfi_energy_0': 0.0, 'bpfi_energy_1': 0.0, 'bpfi_energy_2': 0.0, 'bpfi_energy_3': 0.0,
+        'bpfo_energy_0': 0.0, 'bpfo_energy_1': 0.0, 'bpfo_energy_2': 0.0, 'bpfo_energy_3': 0.0,
+        'bsf_energy_0': 0.0, 'bsf_energy_1': 0.0, 'bsf_energy_2': 0.0, 'bsf_energy_3': 0.0,
+        'ftf_energy_0': 0.0, 'ftf_energy_1': 0.0, 'ftf_energy_2': 0.0,
+    }
+    
+    if n == 0:
+        return empty_result
+    
+    # Compute FFT
+    fft_vals = rfft(x)
+    freqs = rfftfreq(n, 1/fs)
+    power = np.abs(fft_vals)**2
+    total_power = np.sum(power)
+    
+    if total_power == 0:
+        return empty_result
+    
+    result = {}
+    
+    # Extract energy for each fault type and harmonic band
+    for fault_type, bands in BEARING_FAULT_BANDS.items():
+        for i, (f_low, f_high) in enumerate(bands):
+            mask = (freqs >= f_low) & (freqs < f_high)
+            band_energy = np.sum(power[mask]) / total_power
+            result[f'{fault_type.lower()}_energy_{i}'] = float(band_energy)
+    
+    return result
+
+
+# ============================================================
 # Time-Frequency Domain Features (Wavelet Packet)
 # ============================================================
 def wavelet_packet_features(x: np.ndarray, wavelet: str = WAVELET, max_level: int = WP_MAX_LEVEL) -> Dict[str, float]:
@@ -229,6 +273,13 @@ def extract_window_features(
         for name, val in fd_feats.items():
             all_features.append(val)
             all_names.append(f"{ch_name}_{name}")
+        
+        # Bearing fault frequency features (only for vibration)
+        if sensor_name == "vibration":
+            bf_feats = bearing_fault_frequency_features(signal, fs)
+            for name, val in bf_feats.items():
+                all_features.append(val)
+                all_names.append(f"{ch_name}_{name}")
         
         # Wavelet packet
         wp_feats = wavelet_packet_features(signal)

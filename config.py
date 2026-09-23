@@ -73,6 +73,16 @@ FREQ_BANDS = {
     "current_temp": [(0, 100), (100, 500), (500, 2000), (2000, 12800)],
 }
 
+# Bearing fault characteristic frequency bands (Hz)
+# Approximate ranges for common motor bearings at ~1200-1800 RPM
+# These are wide bands to capture harmonics
+BEARING_FAULT_BANDS = {
+    "BPFI": [(100, 150), (200, 300), (400, 600), (800, 1200)],  # Inner race
+    "BPFO": [(60, 100), (120, 200), (240, 400), (480, 800)],    # Outer race
+    "BSF":  [(40, 70), (80, 140), (160, 280), (320, 560)],       # Ball spin
+    "FTF":  [(10, 20), (20, 40), (40, 80)],                       # Cage frequency
+}
+
 # ============================================================
 # Preprocessing
 # ============================================================
