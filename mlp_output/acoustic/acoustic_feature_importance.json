@@ -2,49 +2,54 @@
   "sensor": "acoustic",
   "top_features": [
     {
-      "name": "pressure_wp_entropy",
-      "importance": 0.0,
-      "std": 0.0
-    },
-    {
-      "name": "pressure_wp_energy_7",
-      "importance": 0.0,
-      "std": 0.0
-    },
-    {
-      "name": "pressure_wp_energy_6",
-      "importance": 0.0,
-      "std": 0.0
-    },
-    {
-      "name": "pressure_wp_energy_5",
-      "importance": 0.0,
-      "std": 0.0
-    },
-    {
-      "name": "pressure_wp_energy_4",
-      "importance": 0.0,
-      "std": 0.0
-    },
-    {
-      "name": "pressure_wp_energy_3",
-      "importance": 0.0,
-      "std": 0.0
-    },
-    {
-      "name": "pressure_wp_energy_2",
-      "importance": 0.0,
-      "std": 0.0
+      "name": "pressure_spectral_centroid",
+      "importance": 0.29458935621086335,
+      "std": 0.019184036193481708
     },
     {
       "name": "pressure_wp_energy_1",
-      "importance": 0.0,
-      "std": 0.0
+      "importance": 0.20424038053685054,
+      "std": 0.012552522568764737
+    },
+    {
+      "name": "pressure_dominant_freq",
+      "importance": 0.10852652621665053,
+      "std": 0.008652971296130938
     },
     {
       "name": "pressure_wp_energy_0",
-      "importance": 0.0,
-      "std": 0.0
+      "importance": 0.07174564890116525,
+      "std": 0.009937472582307974
+    },
+    {
+      "name": "pressure_wp_entropy",
+      "importance": 0.06359405916569336,
+      "std": 0.011202648834693463
+    },
+    {
+      "name": "pressure_wp_energy_4",
+      "importance": 0.038384924894926564,
+      "std": 0.010289509646466643
+    },
+    {
+      "name": "pressure_kurtosis",
+      "importance": 0.023431290264261783,
+      "std": 0.008753255411137615
+    },
+    {
+      "name": "pressure_shape_factor",
+      "importance": 0.02126140494474995,
+      "std": 0.0092624015377861
+    },
+    {
+      "name": "pressure_peak_to_peak",
+      "importance": 0.004412339737893578,
+      "std": 0.006447759538761839
+    },
+    {
+      "name": "pressure_rms",
+      "importance": 8.512980417441086e-06,
+      "std": 0.004837426465310122
     },
     {
       "name": "pressure_band_energy_3",
@@ -52,54 +57,49 @@
       "std": 0.0
     },
     {
-      "name": "pressure_band_energy_2",
-      "importance": 0.0,
-      "std": 0.0
+      "name": "pressure_wp_energy_5",
+      "importance": -0.0003484711658837458,
+      "std": 0.0006969423317674915
     },
     {
-      "name": "pressure_band_energy_1",
-      "importance": 0.0,
-      "std": 0.0
-    },
-    {
-      "name": "pressure_band_energy_0",
-      "importance": 0.0,
-      "std": 0.0
+      "name": "pressure_std",
+      "importance": -0.0008662982307633627,
+      "std": 0.004631545902546344
     },
     {
       "name": "pressure_total_power",
-      "importance": 0.0,
-      "std": 0.0
-    },
-    {
-      "name": "pressure_spectral_entropy",
-      "importance": 0.0,
-      "std": 0.0
-    },
-    {
-      "name": "pressure_spectral_centroid",
-      "importance": 0.0,
-      "std": 0.0
-    },
-    {
-      "name": "pressure_dominant_freq",
-      "importance": 0.0,
-      "std": 0.0
+      "importance": -0.0032938481109764163,
+      "std": 0.003984590041333277
     },
     {
       "name": "pressure_impulse_factor",
-      "importance": 0.0,
-      "std": 0.0
+      "importance": -0.003995426572109906,
+      "std": 0.005740493906493491
     },
     {
-      "name": "pressure_shape_factor",
-      "importance": 0.0,
-      "std": 0.0
+      "name": "pressure_var",
+      "importance": -0.00433547302313646,
+      "std": 0.003811512344788791
+    },
+    {
+      "name": "pressure_mean",
+      "importance": -0.00499441813184367,
+      "std": 0.003822138629630754
+    },
+    {
+      "name": "pressure_band_energy_2",
+      "importance": -0.005404732833283144,
+      "std": 0.0021508676125516135
     },
     {
       "name": "pressure_crest_factor",
-      "importance": 0.0,
-      "std": 0.0
+      "importance": -0.008155249722749613,
+      "std": 0.005586684486297488
+    },
+    {
+      "name": "pressure_band_energy_1",
+      "importance": -0.012284708921589605,
+      "std": 0.005319816900084594
     }
   ]
 }

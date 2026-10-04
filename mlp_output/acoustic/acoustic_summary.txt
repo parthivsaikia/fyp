@@ -3,17 +3,19 @@ MLP Fault Diagnosis - ACOUSTIC Sensor
 ============================================================
 
 Test Set Performance:
-  Accuracy:     1.0000
-  Macro F1:     1.0000
-  Macro Precision: 1.0000
-  Macro Recall:   1.0000
+  Accuracy:     0.9398
+  Macro F1:     0.9289
+  Macro Precision: 0.9568
+  Macro Recall:   0.9107
 
-Test Samples: 119
+Test Samples: 714
 
 Per-Class Metrics:
-  BPFI        : Prec=1.0000, Rec=1.0000, F1=1.0000, Support=119.0
+  BPFI        : Prec=0.9188, Rec=0.9979, F1=0.9567, Support=476.0
+  BPFO        : Prec=0.9949, Rec=0.8235, F1=0.9011, Support=238.0
 
 Confusion Matrix:
   Rows=Actual, Cols=Predicted
-  Classes: ['BPFI']
-  BPFI        : [119]
+  Classes: ['BPFI', 'BPFO']
+  BPFI        : [475   1]
+  BPFO        : [ 42 196]

@@ -20,10 +20,27 @@ def load_mat_file(filepath: Path) -> np.ndarray:
     """
     Load .mat file and return data array of shape (n_samples, n_channels).
     
-    For vibration: (1536000, 4) - x_A, y_A, x_B, y_B in g
-    For acoustic: (3072000, 1) - pressure in Pa
+    Supports two formats:
+    1. Old format (vibration/acoustic): nested 'Signal' -> 'y_values' -> 'values'
+    2. New format (recordings_30): flat 'signal' (n_channels, n_samples) and 'fs'
+    
+    For vibration (old): (1536000, 4) - x_A, y_A, x_B, y_B in g
+    For acoustic (old): (3072000, 1) - pressure in Pa
+    For acoustic (new): (3072000, 1) - pressure in Pa
     """
     mat = sio.loadmat(filepath)
+    
+    # Check for new format (recordings_30): 'signal' key with (channels, samples)
+    if 'signal' in mat:
+        data = mat['signal']
+        # Transpose to (n_samples, n_channels)
+        if data.ndim == 2:
+            data = data.T
+        elif data.ndim == 1:
+            data = data.reshape(-1, 1)
+        return data.astype(np.float32)
+    
+    # Old format: nested structure
     sig = mat['Signal'][0, 0]
     y_values = sig['y_values'][0, 0]
     data = y_values['values']  # This IS the data array
